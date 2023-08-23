@@ -13,8 +13,7 @@ public class InsertCustomerUseCase implements InsertCustomerInputPort {
 
     public InsertCustomerUseCase (
             InsertCustomerOutputPort insertCustomerOutputport,
-            FindAddressByZipCodeOutputPort findAddressByZipCodeOutputPort,
-            InsertCustomerInputPort insertCustomerInputPort){
+            FindAddressByZipCodeOutputPort findAddressByZipCodeOutputPort){
 
         this.findAddressByZipCodeOutputPort = findAddressByZipCodeOutputPort;
         this.insertCustomerOutputport = insertCustomerOutputport;

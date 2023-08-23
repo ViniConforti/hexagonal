@@ -5,11 +5,11 @@ import com.arantes.hexagonal.adapters.out.repository.entity.CustomerEntity;
 import com.arantes.hexagonal.adapters.out.repository.mapper.CustomerEntityMapper;
 import com.arantes.hexagonal.application.core.domain.Customer;
 import com.arantes.hexagonal.application.ports.out.InsertCustomerOutputPort;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class InsertCustomerAdapter implements InsertCustomerOutputPort {
 
     private final CustomerRepository customerRepository;
