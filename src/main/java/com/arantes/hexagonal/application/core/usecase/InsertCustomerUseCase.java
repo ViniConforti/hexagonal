@@ -4,6 +4,7 @@ import com.arantes.hexagonal.application.core.domain.Customer;
 import com.arantes.hexagonal.application.ports.in.InsertCustomerInputPort;
 import com.arantes.hexagonal.application.ports.out.FindAddressByZipCodeOutputPort;
 import com.arantes.hexagonal.application.ports.out.InsertCustomerOutputPort;
+import com.arantes.hexagonal.application.ports.out.SendCpfForValidationOutputPort;
 
 public class InsertCustomerUseCase implements InsertCustomerInputPort {
 
@@ -11,12 +12,15 @@ public class InsertCustomerUseCase implements InsertCustomerInputPort {
 
     private final InsertCustomerOutputPort insertCustomerOutputport;
 
+    private final SendCpfForValidationOutputPort sendCpfForValidationOutputPort;
+
     public InsertCustomerUseCase (
             InsertCustomerOutputPort insertCustomerOutputport,
-            FindAddressByZipCodeOutputPort findAddressByZipCodeOutputPort){
+            FindAddressByZipCodeOutputPort findAddressByZipCodeOutputPort, SendCpfForValidationOutputPort sendCpfForValidationOutputPort){
 
         this.findAddressByZipCodeOutputPort = findAddressByZipCodeOutputPort;
         this.insertCustomerOutputport = insertCustomerOutputport;
+        this.sendCpfForValidationOutputPort = sendCpfForValidationOutputPort;
     }
 
     @Override
@@ -24,5 +28,6 @@ public class InsertCustomerUseCase implements InsertCustomerInputPort {
         Address address = findAddressByZipCodeOutputPort.find(zipCode);
         customer.setAddress(address);
         insertCustomerOutputport.insert(customer);
+        sendCpfForValidationOutputPort.send(customer.getCpf());
     }
 }
