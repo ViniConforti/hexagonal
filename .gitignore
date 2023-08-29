@@ -41,3 +41,6 @@ out/
 
 ### Kafka ###
 /kafka/
+
+### Support Apps ###
+/support_apps/
